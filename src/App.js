@@ -36,6 +36,7 @@ class App extends Component {
       let inputText = this.props.store['temp' + i];
       if(inputText.length > 1){
         this.props.store[i].push(inputText);
+        this.props.store.tempTeams = '';
         this.props.store['show' + i + 'Modal'] = false;
       }
     } else {
