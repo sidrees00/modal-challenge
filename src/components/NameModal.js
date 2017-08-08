@@ -11,7 +11,7 @@ class NameModal extends Component {
       <div>
         <ReactModal 
            isOpen={this.props.store.showNameModal}
-           contentLabel="Minimal Modal Example"
+           contentLabel="Name Modal"
            style={styles.modal}
         >
 

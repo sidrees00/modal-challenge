@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import ReactModal from 'react-modal';
+import { observer } from "mobx-react";
+
 import NameModal from './components/NameModal'
 import AddressModal from './components/AddressModal';
 import TeamsModal from './components/TeamsModal';
-
-
 import store from './modalStore';
-import { observer } from "mobx-react";
 
 @observer
 class App extends Component {
@@ -39,6 +37,9 @@ class App extends Component {
   }
 
   render() {
+    let fomattedAddress = <text>{this.props.store.Address[0]} <br /> {this.props.store.Address[1]}</text>,
+        format = this.props.store.Teams.map((team, idx) => <li key={idx}>{team}</li>),
+        formattedTeams = <ol>{format}</ol>; 
     return (
       <div style={styles.container}>
         <h1>Sports Magazine Settings</h1>
@@ -55,7 +56,7 @@ class App extends Component {
         <hr/>
 
         Address
-        <h1>{this.props.store.Address}</h1>
+        <h1>{fomattedAddress}</h1>
         <button onClick={this.handleOpenModal.bind(this,'Address')}> Change Address </button>
         <AddressModal 
           store={store}
@@ -67,7 +68,7 @@ class App extends Component {
         <hr/>
 
         Favorite Teams
-        <h1>{this.props.store.Teams}</h1>
+        <h1>{formattedTeams}</h1>
         <button onClick={this.handleOpenModal.bind(this,'Teams')}> Edit Teams </button>
         <TeamsModal 
           store={store}

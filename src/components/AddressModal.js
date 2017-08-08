@@ -11,7 +11,7 @@ class AddressModal extends Component {
       <div>
         <ReactModal 
            isOpen={this.props.store.showAddressModal}
-           contentLabel="Minimal Modal Example"
+           contentLabel="Address Modal"
            style={styles.modal}
         >
 

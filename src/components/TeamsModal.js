@@ -12,7 +12,7 @@ class TeamsModal extends Component {
 
         <ReactModal 
            isOpen={this.props.store.showTeamsModal}
-           contentLabel="Minimal Modal Example"
+           contentLabel="Teams Modal"
            style={styles.modal}
         >
 
