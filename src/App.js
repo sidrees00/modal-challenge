@@ -9,20 +9,16 @@ import { observer } from "mobx-react";
 class App extends Component {
   constructor(){
     super();
-    this.state = {
-      showModal: false,
-    }
-
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
   
   handleOpenModal () {
-    this.setState({ showModal: true });
+    this.props.store.showModal = true;
   }
   
   handleCloseModal () {
-    this.setState({ showModal: false });
+    this.props.store.showModal = false;
   }
 
   render() {
@@ -30,20 +26,20 @@ class App extends Component {
       <div className="App">
         
         <button onClick={this.handleOpenModal}> TEST </button>
-
+        
         <ReactModal 
-           isOpen={this.state.showModal}
+           isOpen={this.props.store.showModal}
            contentLabel="Minimal Modal Example"
         >
-        <h3>TEST</h3>
+          <h3>TEST</h3>
 
-        <div>
-          <button 
-            onClick={this.handleCloseModal}>Cancel
-          </button>
-          
-        </div>
+          <div>
+            <button onClick={this.handleCloseModal}>
+              Cancel
+            </button>
+          </div>
         </ReactModal>
+      
       </div>
     );
   }
