@@ -13,46 +13,69 @@ class App extends Component {
   constructor(){
     super();
     // this.handleOpenModal = this.handleOpenModal.bind(this);
+    // this.handleModalChange = this.handleModalChange.bind(this);
     // this.handleCloseModal = this.handleCloseModal.bind(this);
+    // this.handleSaveModal = this.handleCloseModal.bind(this);
   }
   
   handleOpenModal (i) {
-    console.log(typeof i)
-    this.props.store[i] = true;
+    this.props.store['show' + i + 'Modal'] = true;
   }
   
-  handleCloseModal () {
-    this.props.store.showModal = false;
+  handleModalChange(argument , event){
+    // console.log(argument, 'argument')
+    // console.log(event.target.value, 'event')
+    this.props.store['temp' + argument] = event.target.value
   }
 
-  handleSaveModal () {
-    let inputText = this.state.temp;
-    this.setState({ name: inputText, showModal: false });
+  handleCloseModal (i) {
+    this.props.store['show' + i + 'Modal'] = false;
+  }
+
+  handleSaveModal (i) {
+    let inputText = this.props.store['temp' + i];
+    this.props.store[i] = inputText;
+    this.props.store['show' + i + 'Modal'] = false;
   }
 
   render() {
     return (
       <div style={styles.container}>
+        <h1>Sports Magazine Settings</h1>
         Name
-        <h1>{this.props.store.name}</h1>
-        <button onClick={this.handleOpenModal.bind(this,'showNameModal')}> Change Name </button>
-        <NameModal store={store} />
+        <h1>{this.props.store.Name}</h1>
+        <button onClick={this.handleOpenModal.bind(this,'Name')}> Change Name </button>
+        <NameModal 
+          store={store}
+          handleCloseModal={this.handleCloseModal.bind(this, 'Name')}
+          handleModalChange={this.handleModalChange.bind(this, 'Name')}
+          handleSaveModal={this.handleSaveModal.bind(this, 'Name')}
+         />
 
         <hr/>
 
         Address
-        <h1>{this.props.store.address}</h1>
-        <button onClick={this.handleOpenModal.bind(this,'showAddressModal')}> Change Address </button>
-        <AddressModal store={store} />
+        <h1>{this.props.store.Address}</h1>
+        <button onClick={this.handleOpenModal.bind(this,'Address')}> Change Address </button>
+        <AddressModal 
+          store={store}
+          handleCloseModal={this.handleCloseModal.bind(this, 'Address')}
+          handleModalChange={this.handleModalChange.bind(this, 'Address')}
+          handleSaveModal={this.handleSaveModal.bind(this, 'Address')}
+        />
 
         <hr/>
 
         Favorite Teams
-        <h1>{this.props.store.teams}</h1>
-        <button onClick={this.handleOpenModal.bind(this,'showTeamsModal')}> Edit Teams </button>
-        <TeamsModal store={store} />
+        <h1>{this.props.store.Teams}</h1>
+        <button onClick={this.handleOpenModal.bind(this,'Teams')}> Edit Teams </button>
+        <TeamsModal 
+          store={store}
+          handleCloseModal={this.handleCloseModal.bind(this, 'Teams')}
+          handleModalChange={this.handleModalChange.bind(this, 'Teams')}
+          handleSaveModal={this.handleSaveModal.bind(this, 'Teams')} 
+        />
         
-      
       </div>
     );
   }

@@ -7,13 +7,13 @@ export class TodoStore {
 
 
 
-  @observable name = 'Suhail';
+  @observable Name = 'Suhail';
   @observable category = 'Name';
-  @observable temp = '';
-  @observable address = '3591 fams ct';
+  @observable tempName = '';
+  @observable Address = '3591 fams ct';
   @observable tempAddress = '3591 fams ct';
 
-  @observable teams = ['knicks', 'nets','celtics'];
+  @observable Teams = ['knicks', 'nets','celtics'];
   @observable tempTeams = '3591 fams ct';
 
 

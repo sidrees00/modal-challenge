@@ -6,25 +6,10 @@ import { observer } from "mobx-react";
 
 @observer
 class TeamsModal extends Component {
-  
-  handleCloseModal () {
-    this.props.store.showTeamsModal = false;
-  }
-
-  handleModalChange(e){
-    this.props.store.tempTeams = e.target.value
-  }
-
-  handleSaveModal () {
-    let inputText = this.props.store.tempTeams;
-
-    this.props.store.teams = inputText;
-    this.props.store.showTeamsModal = false;
-  }
-
   render(){
     return (
       <div>
+
         <ReactModal 
            isOpen={this.props.store.showTeamsModal}
            contentLabel="Minimal Modal Example"
@@ -32,25 +17,21 @@ class TeamsModal extends Component {
         >
 
         <form>
-         Edit Teams <input type='text' onChange={this.handleModalChange.bind(this)}></input>
+         Edit Teams <input type='text' onChange={this.props.handleModalChange}></input>
         </form>
 
-        <div style={styles.buttonContainer}>
-          <button 
-            style={styles.modalButton} 
-            onClick={this.handleCloseModal.bind(this)}>Cancel
-          </button>
-          <button 
-            style={styles.modalButton} 
-            onClick={this.handleSaveModal.bind(this)}>Save
-          </button>
-        </div>
-
+           <div style={styles.buttonContainer}>
+            <button 
+              style={styles.modalButton} 
+              onClick={this.props.handleCloseModal}>Cancel
+            </button>
+            <button 
+              style={styles.modalButton} 
+              onClick={this.props.handleSaveModal}>Save
+            </button>
+          </div>
         </ReactModal>
-      
-
-        
-        </div>
+      </div>
       );
   }
 };

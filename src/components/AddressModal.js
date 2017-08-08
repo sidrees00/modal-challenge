@@ -6,24 +6,6 @@ import { observer } from "mobx-react";
 
 @observer
 class AddressModal extends Component {
-  
-  handleCloseModal () {
-    this.props.store.showAddressModal = false;
-  }
-
-  handleModalChange(e){
-    this.props.store.tempAddress = e.target.value
-  }
-
-  handleSaveModal () {
-    let inputText = this.props.store.tempAddress;
-    console.log(inputText, 'inputText')
-
-    this.props.store.address = inputText;
-    this.props.store.showAddressModal = false;
-  }
-
-        // <h3>Edit {this.props.store.category} </h3>
   render(){
     return (
       <div>
@@ -34,23 +16,21 @@ class AddressModal extends Component {
         >
 
         <form>
-          Address <input type='text' onChange={this.handleModalChange.bind(this)}></input>
+          Address <input type='text' onChange={this.props.handleModalChange}></input>
         </form>
 
-        <div style={styles.buttonContainer}>
-          <button 
-            style={styles.modalButton} 
-            onClick={this.handleCloseModal.bind(this)}>Cancel
-          </button>
-          <button 
-            style={styles.modalButton} 
-            onClick={this.handleSaveModal.bind(this)}>Save
-          </button>
-        </div>
-
-        </ReactModal>
-              
-        </div>
+          <div style={styles.buttonContainer}>
+            <button 
+              style={styles.modalButton} 
+              onClick={this.props.handleCloseModal}>Cancel
+            </button>
+            <button 
+              style={styles.modalButton} 
+              onClick={this.props.handleSaveModal}>Save
+            </button>
+          </div>
+        </ReactModal>   
+      </div>
       );
   }
 };

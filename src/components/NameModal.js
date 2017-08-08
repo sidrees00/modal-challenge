@@ -6,22 +6,6 @@ import { observer } from "mobx-react";
 
 @observer
 class NameModal extends Component {
-  
-  handleModalChange(e){
-    this.props.store.temp = e.target.value
-  }
-
-  handleCloseModal () {
-    this.props.store.showNameModal = false;
-  }
-
-  handleSaveModal () {
-    let inputText = this.props.store.temp;
-    this.props.store.name = inputText;
-    this.props.store.showNameModal = false;
-  }
-        // <h3>Edit {this.props.store.category} </h3>
-
   render(){
     return (
       <div>
@@ -32,23 +16,21 @@ class NameModal extends Component {
         >
 
           <form>
-            Full Name <input type='text' onChange={this.handleModalChange.bind(this)}></input>
+            Full Name <input type='text' onChange={this.props.handleModalChange}></input>
           </form>
 
           <div style={styles.buttonContainer}>
             <button 
               style={styles.modalButton} 
-              onClick={this.handleCloseModal.bind(this)}>Cancel
+              onClick={this.props.onClick}>Cancel
             </button>
             <button 
               style={styles.modalButton} 
-              onClick={this.handleSaveModal.bind(this)}>Save
+              onClick={this.props.handleSaveModal}>Save
             </button>
           </div>
-
         </ReactModal>
-      
-        </div>
+      </div>
       );
   }
 };
