@@ -1,4 +1,4 @@
-import { computed, observable } from "mobx"
+import { observable } from "mobx"
 
 export class TodoStore {
   @observable showNameModal = false;
@@ -10,21 +10,13 @@ export class TodoStore {
   @observable input = '';
 
   @observable tempName = '';
-  @observable Name = 'Suhail';
+  @observable Name = 'Suhail Idrees';
 
   @observable tempAddress = [];
-  @observable Address = ['3591 Fams Ct.', 'Levittown, NY 11756'];
+  @observable Address = ['1600 Pennsylvania Ave', 'Washington, DC 20500'];
 
   @observable tempTeams = '';
   @observable Teams = [];
-
-
-
-
-
-
-
-
 
 }
 

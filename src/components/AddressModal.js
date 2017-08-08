@@ -15,11 +15,11 @@ class AddressModal extends Component {
            contentLabel="Address Modal"
            style={styles.modal}
         >
-        <h1>Change Address</h1>
+        <h1 style={{marginTop: 0}}>Change Address</h1>
         <form>
-          Line 1: <input type='text' onChange={this.props.handleFirstAddressChange}></input>
+          Line 1: <input type='text' style={styles.inputField} onChange={this.props.handleFirstAddressChange}></input>
           <br />
-          Line 2: <input type='text' onChange={this.props.handleSecondAddressChange}></input>
+          Line 2: <input type='text' style={styles.inputField} onChange={this.props.handleSecondAddressChange}></input>
         </form>
 
           <div style={styles.buttonContainer}>
@@ -57,6 +57,13 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'center',
   },
+  inputField: {
+    height: 25,
+    width: 250,
+    marginTop: 2,
+    marginBottom: 10,
+    fontSize: 17,
+  },
   editButton: {
     height: 40,
     width: 150,
@@ -67,7 +74,12 @@ const styles = {
     height: 40, 
     width: 200,
     borderRadius: 0,
-    marginTop: '40%',
+    margin: 4,
+    marginTop: '10%',
+    fontSize: 15,
+    fontWeight: 300,
+    color: 'white',
+    backgroundColor: '#4285F4',
   },
   horizontalRule: {
     marginTop: 20,

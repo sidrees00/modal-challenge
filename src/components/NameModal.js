@@ -14,9 +14,10 @@ class NameModal extends Component {
            contentLabel="Name Modal"
            style={styles.modal}
         >
+          <h1 style={{marginTop: 0}}>Change Name</h1>
 
           <form>
-            Full Name <input type='text' onChange={this.props.handleModalChange}></input>
+            Full Name <input style={styles.inputField} type='text' onChange={this.props.handleModalChange}></input>
           </form>
 
           <div style={styles.buttonContainer}>
@@ -46,8 +47,18 @@ const styles = {
       width: 300,
       borderRadius: 0,
       marginLeft: '27%',
-      marginTop: '15%'
+      marginTop: '15%',
+      fontSize: 17,
+      fontWeight: 300,
     }
+  },
+  inputField: {
+    height: 25,
+    width: 250,
+    marginTop: 2,
+    marginBottom: 10,
+    fontSize: 17,
+
   },
   buttonContainer: {
     display: 'flex',
@@ -62,9 +73,15 @@ const styles = {
   },
   modalButton: {
     height: 40, 
+    margin: 4,
     width: 200,
     borderRadius: 0,
-    marginTop: '40%',
+    marginTop: '30%',
+    fontSize: 15,
+    fontWeight: 300,
+    color: 'white',
+    backgroundColor: '#4285F4',
+    borderColor: 'black'
   },
   horizontalRule: {
     marginTop: 20,

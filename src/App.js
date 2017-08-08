@@ -10,10 +10,6 @@ import store from './modalStore';
 class App extends Component {
   constructor(){
     super();
-    // this.handleOpenModal = this.handleOpenModal.bind(this);
-    // this.handleModalChange = this.handleModalChange.bind(this);
-    // this.handleCloseModal = this.handleCloseModal.bind(this);
-    // this.handleSaveModal = this.handleCloseModal.bind(this);
   }
   
   handleOpenModal (i) {
@@ -21,11 +17,8 @@ class App extends Component {
   }
   
   handleModalChange(argument , event){
-    // console.log(argument, 'argument')
-    // console.log(event.target.value, 'event')
     if(argument[0] === 'Address') {
       if(argument[1] === 0){
-        console.log(this.props.store['temp' + argument[0]])
         this.props.store['temp' + argument[0]][0] = event.target.value
       } else {
         this.props.store['temp' + argument[0]][1] = event.target.value
@@ -40,10 +33,11 @@ class App extends Component {
 
   handleSaveModal (i) {
     if(i === "Teams"){
-    let inputText = this.props.store['temp' + i];
-    console.log(inputText)
-    this.props.store[i].push(inputText);
-    this.props.store['show' + i + 'Modal'] = false;
+      let inputText = this.props.store['temp' + i];
+      if(inputText.length > 1){
+        this.props.store[i].push(inputText);
+        this.props.store['show' + i + 'Modal'] = false;
+      }
     } else {
       let inputText = this.props.store['temp' + i];
       this.props.store[i] = inputText;
@@ -59,9 +53,14 @@ class App extends Component {
     return (
       <div style={styles.container}>
         <h1>Sports Magazine Settings</h1>
-        Name
-        <h1>{this.props.store.Name}</h1>
-        <button onClick={this.handleOpenModal.bind(this,'Name')}> Change Name </button>
+        <h2 style={styles.headings}>Name</h2>
+        <h2>{this.props.store.Name}</h2>
+        <button 
+          onClick={this.handleOpenModal.bind(this,'Name')}
+          style={styles.editButton}
+        > Change Name 
+        </button>
+        
         <NameModal 
           store={store}
           handleCloseModal={this.handleCloseModal.bind(this, 'Name')}
@@ -69,11 +68,11 @@ class App extends Component {
           handleSaveModal={this.handleSaveModal.bind(this, 'Name')}
          />
 
-        <hr/>
+        <hr style={styles.horizontalRule}/>
 
-        Address
-        <h1>{fomattedAddress}</h1>
-        <button onClick={this.handleOpenModal.bind(this,'Address')}> Change Address </button>
+        <h2 style={styles.headings}>Address</h2>
+        <h2>{fomattedAddress}</h2>
+        <button onClick={this.handleOpenModal.bind(this,'Address')} style={styles.editButton}> Change Address </button>
         <AddressModal 
           store={store}
           handleCloseModal={this.handleCloseModal.bind(this, 'Address')}
@@ -82,11 +81,11 @@ class App extends Component {
           handleSaveModal={this.handleSaveModal.bind(this, 'Address')}
         />
 
-        <hr/>
+        <hr style={styles.horizontalRule}/>
 
-        Favorite Teams
-        <h1>{formattedTeams}</h1>
-        <button onClick={this.handleOpenModal.bind(this,'Teams')}> Edit Teams </button>
+        <h2 style={styles.headings}>Favorite Teams</h2>
+        <h2>{formattedTeams}</h2>
+        <button onClick={this.handleOpenModal.bind(this,'Teams')} style={styles.editButton}> Edit Teams </button>
         <TeamsModal 
           store={store}
           handleCloseModal={this.handleCloseModal.bind(this, 'Teams')}
@@ -113,6 +112,10 @@ const styles = {
       marginTop: '15%'
     }
   },
+  headings: {
+    fontWeight: 300,
+    fontSize: 30
+  },
   buttonContainer: {
     display: 'flex',
     flexDirection: 'row',
@@ -122,7 +125,11 @@ const styles = {
     height: 40,
     width: 150,
     borderRadius: 0,
-    fontSize: 13,
+    fontSize: 15,
+    fontWeight: 300,
+    color: 'white',
+    backgroundColor: '#4285F4',
+    borderColor: 'black'
   },
   modalButton: {
     height: 40, 

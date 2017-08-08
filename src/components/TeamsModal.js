@@ -27,9 +27,9 @@ class TeamsModal extends Component {
            style={styles.modal}
         >
 
-        Add Teams
+        <h2>Add Teams</h2>
         <form>
-            Team 1 <input type='text' value={this.props.store.tempTeams} onChange={this.props.handleModalChange}></input>
+            Team 1 <input type='text' value={this.props.store.tempTeams} onChange={this.props.handleModalChange} style={styles.inputField}></input>
           </form>
          
 
@@ -57,6 +57,14 @@ const styles = {
   container: {
     margin: 30
   },
+  inputField: {
+    height: 25,
+    width: 250,
+    marginTop: 2,
+    marginBottom: 10,
+    fontSize: 17,
+
+  },
   modal: {
     content: {
       color: 'black',
@@ -64,7 +72,9 @@ const styles = {
       width: 300,
       borderRadius: 0,
       marginLeft: '27%',
-      marginTop: '15%'
+      marginTop: '15%',
+      fontSize: 17,
+      fontWeight: 300,
     }
   },
   buttonContainer: {
@@ -81,8 +91,14 @@ const styles = {
   modalButton: {
     height: 40, 
     width: 200,
+    margin: 4,
     borderRadius: 0,
-    marginTop: '40%',
+    marginTop: '20%',
+    fontSize: 15,
+    fontWeight: 300,
+    color: 'white',
+    backgroundColor: '#4285F4',
+    borderColor: 'black'
   },
   horizontalRule: {
     marginTop: 20,
