@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import ReactModal from 'react-modal';
+import NameModal from './components/NameModal'
+import AddressModal from './components/AddressModal';
+import TeamsModal from './components/TeamsModal';
 
 
+import store from './modalStore';
 import { observer } from "mobx-react";
 
 @observer
 class App extends Component {
   constructor(){
     super();
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
+    // this.handleOpenModal = this.handleOpenModal.bind(this);
+    // this.handleCloseModal = this.handleCloseModal.bind(this);
   }
   
-  handleOpenModal () {
-    this.props.store.showModal = true;
+  handleOpenModal (i) {
+    console.log(typeof i)
+    this.props.store[i] = true;
   }
   
   handleCloseModal () {
@@ -28,33 +32,26 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        
-        <button onClick={this.handleOpenModal}> TEST </button>
-        
-        <ReactModal 
-           isOpen={this.props.store.showModal}
-           contentLabel="Minimal Modal Example"
-           style={styles.modal}
-        >
-          <h3>TEST</h3>
+      <div style={styles.container}>
+        Name
+        <h1>{this.props.store.name}</h1>
+        <button onClick={this.handleOpenModal.bind(this,'showNameModal')}> Change Name </button>
+        <NameModal store={store} />
 
-        <form>
-          Full Name <input type='text'></input>
-        </form>
+        <hr/>
 
-        <div style={styles.buttonContainer}>
-          <button 
-            style={styles.modalButton} 
-            onClick={this.handleCloseModal}>Cancel
-          </button>
-          <button 
-            style={styles.modalButton} 
-            onClick={this.handleSaveModal.bind(this)}>Save
-          </button>
-        </div>
+        Address
+        <h1>{this.props.store.address}</h1>
+        <button onClick={this.handleOpenModal.bind(this,'showAddressModal')}> Change Address </button>
+        <AddressModal store={store} />
+
+        <hr/>
+
+        Favorite Teams
+        <h1>{this.props.store.teams}</h1>
+        <button onClick={this.handleOpenModal.bind(this,'showTeamsModal')}> Edit Teams </button>
+        <TeamsModal store={store} />
         
-        </ReactModal>
       
       </div>
     );
