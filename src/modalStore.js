@@ -7,15 +7,16 @@ export class TodoStore {
 
   // @observable category = 'Name';
 
+  @observable input = '';
 
   @observable tempName = '';
   @observable Name = 'Suhail';
 
-  @observable tempAddress = ['3591 fams ct'];
+  @observable tempAddress = [];
   @observable Address = ['3591 Fams Ct.', 'Levittown, NY 11756'];
 
-  @observable tempTeams = ['3591 fams ct'];
-  @observable Teams = ['Knicks', 'Spurs','Thunder'];
+  @observable tempTeams = '';
+  @observable Teams = [];
 
 
 

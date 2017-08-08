@@ -23,6 +23,14 @@ class App extends Component {
   handleModalChange(argument , event){
     // console.log(argument, 'argument')
     // console.log(event.target.value, 'event')
+    if(argument[0] === 'Address') {
+      if(argument[1] === 0){
+        console.log(this.props.store['temp' + argument[0]])
+        this.props.store['temp' + argument[0]][0] = event.target.value
+      } else {
+        this.props.store['temp' + argument[0]][1] = event.target.value
+      }
+    } 
     this.props.store['temp' + argument] = event.target.value
   }
 
@@ -31,9 +39,17 @@ class App extends Component {
   }
 
   handleSaveModal (i) {
+    if(i === "Teams"){
     let inputText = this.props.store['temp' + i];
-    this.props.store[i] = inputText;
+    console.log(inputText)
+    this.props.store[i].push(inputText);
     this.props.store['show' + i + 'Modal'] = false;
+    } else {
+      let inputText = this.props.store['temp' + i];
+      this.props.store[i] = inputText;
+      this.props.store['show' + i + 'Modal'] = false;
+    }
+
   }
 
   render() {
@@ -61,7 +77,8 @@ class App extends Component {
         <AddressModal 
           store={store}
           handleCloseModal={this.handleCloseModal.bind(this, 'Address')}
-          handleModalChange={this.handleModalChange.bind(this, 'Address')}
+          handleFirstAddressChange={this.handleModalChange.bind(this, ['Address',0])}
+          handleSecondAddressChange={this.handleModalChange.bind(this, ['Address',1])}
           handleSaveModal={this.handleSaveModal.bind(this, 'Address')}
         />
 

@@ -22,7 +22,7 @@ class NameModal extends Component {
           <div style={styles.buttonContainer}>
             <button 
               style={styles.modalButton} 
-              onClick={this.props.onClick}>Cancel
+              onClick={this.props.handleCloseModal}>Cancel
             </button>
             <button 
               style={styles.modalButton} 

@@ -6,7 +6,18 @@ import { observer } from "mobx-react";
 
 @observer
 class TeamsModal extends Component {
+  constructor(props){
+    super(props)
+  }
+  addTeam(){
+    let temp = this.props.store.tempTeams;
+    this.props.store.Teams.push(temp);
+    this.props.store.tempTeams = '';
+  }
+
   render(){
+    
+
     return (
       <div>
 
@@ -16,9 +27,15 @@ class TeamsModal extends Component {
            style={styles.modal}
         >
 
+        Add Teams
         <form>
-         Edit Teams <input type='text' onChange={this.props.handleModalChange}></input>
-        </form>
+            Team 1 <input type='text' value={this.props.store.tempTeams} onChange={this.props.handleModalChange}></input>
+          </form>
+         
+
+
+        <text style={{cursor: 'pointer', color: 'blue'}}
+         onClick={this.addTeam.bind(this)}>+ Add another team</text>
 
            <div style={styles.buttonContainer}>
             <button 

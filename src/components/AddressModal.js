@@ -9,14 +9,17 @@ class AddressModal extends Component {
   render(){
     return (
       <div>
+
         <ReactModal 
            isOpen={this.props.store.showAddressModal}
            contentLabel="Address Modal"
            style={styles.modal}
         >
-
+        <h1>Change Address</h1>
         <form>
-          Address <input type='text' onChange={this.props.handleModalChange}></input>
+          Line 1: <input type='text' onChange={this.props.handleFirstAddressChange}></input>
+          <br />
+          Line 2: <input type='text' onChange={this.props.handleSecondAddressChange}></input>
         </form>
 
           <div style={styles.buttonContainer}>
