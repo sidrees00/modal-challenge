@@ -1,8 +1,8 @@
 import { computed, observable } from "mobx"
 
 export class TodoStore {
-  @observable name = 'Suhail'
-  @observable showModal = false
+  @observable name = 'Suhail';
+  @observable showModal = false;
 }
 
-export default new TodoStore
+export default new TodoStore;
